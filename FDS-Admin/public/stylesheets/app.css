@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    font-family: "Quicksand";
+    color: #333;
+    
+}
+
+body {
+    background-color: #e9ecef;
+}
+
+
+.navbar {
+    background-color: #deaaff;
+}
+
+.btn-new-submit {
+    background-color: #d0d1ff;
+}
+
+.btn-new-submit:hover {
+    background-color: #e2afff;
+}
+
+.card-index {
+    
+    border-radius : 10px;
+}
+
+.card-index:hover {
+    box-shadow: 1px 3px 5px rgba(0,0,0,0.2);
+}
+
+.new-edit-form {
+    background-color: #FFF;
+    border-radius: 10px;
+    border: 1px solid #6c757d;
+}
+
+.my-custom-scrollbar {
+    position: relative;
+    height: 200px;
+    overflow: auto;
+}
+
+.table-wrapper-scroll-y {
+    display: block;
+}

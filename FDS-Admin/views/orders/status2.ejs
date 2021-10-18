@@ -1,0 +1,67 @@
+<% layout('layouts/boilerplate') %>
+
+
+<% let count = 0 %> 
+<% let areOrders = false %> 
+<div class="row">
+  <% for(let order of orders) {%>
+    <% if(order.stage === 'initial') {%>
+      <% areOrders = true %> 
+      <div class="col-3 offset-1">
+        <div class="card" style="width: 19rem;">
+            <div class="card-body">
+              <h5 class="card-title"> <%= order.userId.name %> </h5>
+              <h6 class="card-subtitle mb-3"> Order Number: <b><%= order.orderNo  %> </b></h6>              
+              <h5 class="card-subtitle mb-3">Total Amount: <b>Rs.<%= order.cartTotal %></b></h5>
+              <form action="/orders/topreparing/<%= order._id %>" method="POST">
+                <div class="mb-2">
+                    <h5>Order? </h5>
+                    <div class="mx-3 form-check">
+                        <input class="form-check-input" type="radio" name="order[status]" id="accept" value="accept" checked>
+                        <label class="form-check-label" for="accept">
+                          Accept
+                        </label>
+                      </div>
+                      <div class=" mx-3 form-check">
+                        <input class="form-check-input" type="radio" name="order[status]" id="reject" value="reject">
+                        <label class="form-check-label" for="reject">
+                          Reject
+                        </label>
+                      </div>
+                </div>
+                <button class="btn btn-new-submit mt-2 mb-4">Submit</button>
+              </form>
+              <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                <table class="table table-bordered table-striped mb-2 table-primary table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">Qty</th>
+                      <th scope="col">Item</th>
+                      <th scope="col">Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% for( let p of order.cart) {%>
+                        <tr>
+                            <th scope="row"><%= p.quantity %></th>
+                            <td><%= p.product.name %> </td>
+                            <td><%= p.amt %></td>
+                        </tr>
+                    <% } %>  
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+    </div>
+    <% count += 1 %>
+    <% if(count === 3) {%>
+    <% break } %>   
+    <% } %>  
+  <% } %>  
+</div>
+
+<% if(!areOrders) {%>
+  <h1>No Orders...</h1>
+<% } %>  

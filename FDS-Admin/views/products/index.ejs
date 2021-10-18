@@ -1,0 +1,46 @@
+<% layout('layouts/boilerplate') %>
+
+ <div class="mb-3">
+     <h1>Main Menu</h1>
+ </div>
+
+
+<% for (let product of products) { %>
+    <div class="card card-index mb-3">
+        <div class="row">
+            <div class="col-md-4 d-flex alig-items-center">
+                <img class="img-fluid" alt="" src= <%= product.image.url %> > 
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <% if(product.kind === 'veg') {%>
+                        <div class="mb-2">
+                            <img src="https://img.icons8.com/color/25/000000/vegetarian-food-symbol.png"/>
+                        </div>
+                    <% }else { %>  
+                        <div class="mb-2">
+                            <img src="https://img.icons8.com/color/25/000000/non-vegetarian-food-symbol.png"/>
+                        </div>
+                    <% } %> 
+                    
+                    
+                    <h3 class="card-title"><%= product.name %>  </h3>
+                    <p class="card-text">Description: <%= product.description %> </p>
+                    <h4 class="card-subtitle mt-3 mb-3">Rs. <%= product.price %></h4>
+                    <p class="card-text"><%= product.availability %></p>
+                    <div class="d-flex align-items-center">
+                        <a href="/products/<%= product._id%>/edit" class="btn btn-new-submit">Edit</a>
+                        <form action="/products/<%= product._id %>?_method=DELETE" method="POST" class="d-inline">
+                            <button class="btn btn-danger mx-2">Delete</button>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+    </div>
+<% } %>
+
+
+

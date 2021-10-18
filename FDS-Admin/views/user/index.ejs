@@ -1,0 +1,35 @@
+<% layout('layouts/boilerplate')%>
+
+<% let srNo = 1 %> 
+<% for (let user of users) {%>
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-1">
+                    <%= srNo  %>
+                    <% srNo += 1 %>  
+                </div>
+                <div class="col-4">
+                    <p><%= user._id %> </p>
+                </div>
+                <div class="col-5">
+                    <h5><%= user.name %> </h5>
+                </div>
+                <div class="col-2">
+                    <p>
+                      <button class="btn btn-new-submit" type="button" data-bs-toggle="collapse" data-bs-target="#<%= user.name %>" aria-expanded="false">
+                        More Info
+                      </button>
+                    </p>
+                    
+                </div>
+                <div class="collapse" id="<%= user.name %>">
+                    <div class="card card-body">
+                      Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                    </div>
+                  </div>
+            </div>
+              
+        </div>
+    </div>
+<% } %>  

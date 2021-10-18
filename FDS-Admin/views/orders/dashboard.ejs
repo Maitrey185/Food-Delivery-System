@@ -1,0 +1,106 @@
+<% layout('layouts/boilerplate') %>
+
+
+<div class="d-flex justify-content-around">
+    
+        
+            <div>
+                <p><b>Preparing</b></p>
+                <div class="card " style="width: 20rem;">
+                    <!-- <div class="row">
+                        <div class=" d-flex col-2 justify-content-center">No.</div>
+                        <div class="d-flex col-5 justify-content-center">Name</div>
+                        <div class="d-flex col-5 justify-content-center">Amount</div>
+                    </div> -->
+                    <table class="table table-bordered table-striped mb-2 table-primary table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col"> No.</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Next</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <% for(let order of orders) {%>
+                                <% if(order.stage === 'preparing') {%>
+                                    <tr>
+                                        <th scope="row"><%= order.orderNo %> </th>
+                                        <td><%= order.cartTotal %> </td>
+                                        <td>
+                                            <form action="/orders/dashboard/toprepared/<%= order._id %>" method="POST">
+                                                <button class="btn btn-new-submit">
+                                                    Next
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                <% } %> 
+                            <% } %> 
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div>
+                <p><b>Prepared & Ready to Pickup</b></p>
+                <div class="card" style="width: 20rem;">
+                    <table class="table table-bordered table-striped mb-2 table-primary table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col"> No.</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Next</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <% for(let order of orders) {%>
+                                <% if(order.stage === 'prepared') { %> 
+                                    <tr>
+                                        <th scope="row"><%= order.orderNo %> </th>
+                                        <td><%= order.cartTotal %> </td>
+                                        <td> 
+                                            <form action="/orders/dashboard/topickedup/<%= order._id %>" method="POST">
+                                                <button class="btn btn-new-submit">
+                                                    Next
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                <% } %> 
+                            <% } %> 
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div>
+                <p><b>Picked Up</b></p>
+                <div class="card" style="width: 20rem;">
+                    <table class="table table-bordered table-striped mb-2 table-primary table-hover">
+                        <thead>
+                          <tr>
+                            <th scope="col"> No.</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Next</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <% for(let order of orders) {%>
+                                <% if(order.stage === 'pickedup') { %>
+                                    <tr>
+                                        <th scope="row"><%= order.orderNo %> </th>
+                                        <td><%= order.cartTotal %> </td>
+                                        <td>
+                                            <form action="/orders/dashboard/toorderhistory/<%= order._id %>" method="POST">
+                                                <button class="btn btn-new-submit">
+                                                    Next
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                <% } %>  
+                            <% } %> 
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+</div>
+ 

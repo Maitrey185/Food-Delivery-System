@@ -1,0 +1,50 @@
+<% layout('layouts/boilerplate') %>
+
+ 
+
+<div class=" d-flex justify-content-around">
+    <div>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <!-- <textarea name="orders" id="orders" cols="10" rows="10" class="form-control mb-3">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, asperiores corrupti iste sint molestias natus perspiciatis reiciendis quas dolorem minus, error voluptatem earum nam velit veritatis aliquid ipsum unde tempore?
+              </textarea> -->
+              
+              <h5 class="card-subtitle mb-3">Total Amount: Rs.1000</h5>
+              <form action="">
+                <div class="mb-2">
+                    <h5>Order? </h5>
+                    <div class="mx-3 form-check">
+                        <input class="form-check-input" type="radio" name="order[status]" id="accept" value="accept" checked>
+                        <label class="form-check-label" for="accept">
+                          Accept
+                        </label>
+                      </div>
+                      <div class=" mx-3 form-check">
+                        <input class="form-check-input" type="radio" name="order[status]" id="reject" value="reject">
+                        <label class="form-check-label" for="reject">
+                          Reject
+                        </label>
+                      </div>
+                </div>
+                <button class="btn btn-new-submit my-2">Submit</button>
+              </form>
+              <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                <table class="table table-bordered table-striped mb-2">
+                  <thead>
+                    <tr>
+                      <th scope="col">Qty</th>
+                      <th scope="col">Item</th>
+                      <th scope="col">Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+    </div>
+    </div>  

@@ -1,0 +1,131 @@
+<% layout('layouts/boilerplate')%>
+<div class="row">
+    <h1 class="text-center">Edit Item</h1>
+    <div class="col-md-6 offset-md-3 new-edit-form">
+        <form action="/products/<%= product._id %>?_method=PUT" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label class="form-label" for="title"><b>Name</b></label>
+                <input class="form-control" type="text" id="title" name="product[name]" value="<%= product.name %>" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <!-- <div class="mb-3">
+                <label class="form-label" for="location">Location</label>
+                <input class="form-control" type="text" id="location" name="campground[location]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div> -->
+
+            <!-- <div class="mb-3">
+                <label class="form-label" for="image">Image Url</label>
+                <input class="form-control" type="text" id="image" name="campground[image]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div> -->
+            <div class="mb-3">
+                <label class="form-label" for="price"><b>Price</b></label>
+                <div class="input-group">
+                    <span class="input-group-text" id="price-label">$</span>
+                    <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="price"
+                        aria-describedby="price-label" name="product[price]" value="<%= product.price %>" required>
+                </div>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+
+            <!-- <div class="mb-3">
+                <label class="form-label" for="category">Category</label>
+                <input class="form-control" type="text" id="category" name="product[category]" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div> -->
+
+              <div class="mb-3">
+                <p><b>Category</b> </p>
+                <div class="mx-4 form-check">
+                    <input class="form-check-input" type="radio" name="product[category]" id="soup" value="Soup" <%= product.category === 'Soup' ? "checked": '' %>>
+                    <label class="form-check-label" for="soup" >
+                      Soup
+                    </label>
+                </div>
+                <div class="mx-4 form-check">
+                    <input class="form-check-input" type="radio" name="product[category]" id="starter" value="Starter" <%= product.category === 'Starter' ? "checked": '' %>>
+                    <label class="form-check-label" for="starter">
+                      Starter
+                    </label>
+                </div>
+                <div class="mx-4 form-check">
+                    <input class="form-check-input" type="radio" name="product[category]" id="main-course" value="Main Course" <%= product.category === "Main Course" ? "checked" : '' %>>
+                    <label class="form-check-label" for="main-course">
+                      Main Course
+                    </label>
+                </div>
+                <div class="mx-4 form-check">
+                    <input class="form-check-input" type="radio" name="product[category]" id="dessert" value="Dessert" <%= product.category === 'Dessert' ? "checked" : '' %>>
+                    <label class="form-check-label" for="dessert">
+                      Dessert
+                    </label>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <p><b>Veg / Non-Veg?</b></p>
+                <div class="mx-4 form-check">
+                    <input class="form-check-input" type="radio" name="product[kind]" id="veg" value="veg" <%= product.kind === 'veg' ? "checked" : "" %>>
+                    <label class="form-check-label" for="veg">
+                      Veg
+                    </label>
+                  </div>
+                  <div class="mx-4 form-check">
+                    <input class="form-check-input" type="radio" name="product[kind]" id="non-veg" value="non-veg" <%= product.kind === 'non-veg' ? "checked" : "" %>>
+                    <label class="form-check-label" for="non-veg">
+                      Non-Veg
+                    </label>
+                  </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="description"><b>Description</b></label>
+                <textarea class="form-control" type="text" id="description" name="product[description]" 
+                    required><%= product.description %></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label"><b>Want to change the image?</b></label>
+                <div class="mb-3">
+                    <img src="<%= product.image.thumbnail %>" class="img-thumbnail" alt="">
+                </div>
+                <input class="form-control" type="file" id="image" name="image">
+            </div>
+            
+
+            <div class="mb-3">
+                <p><b>Availability</b></p>
+                <div class="mx-4 form-check">
+                    <input class="form-check-input" type="radio" name="product[availability]" id="available" value="available" <%= product.availability === 'available' ? "checked" : "" %>>
+                    <label class="form-check-label" for="available">
+                      Available
+                    </label>
+                  </div>
+                  <div class="mx-4 form-check">
+                    <input class="form-check-input" type="radio" name="product[availability]" id="unavailable" value="unavailable" <%= product.availability === 'unavailable' ? "checked" : "" %>>
+                    <label class="form-check-label" for="unavailable">
+                      Unavailable
+                    </label>
+                  </div>
+            </div>
+
+            <div class="mb-3">
+                <button class="btn btn-new-submit">Edit Item</button>
+            </div>
+        </form>
+        <!-- <a href="/products">Back To Food</a> -->
+    </div>
+</div>
